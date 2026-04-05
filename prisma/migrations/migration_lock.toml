@@ -1,0 +1,11 @@
+{
+  "version": "6.19.3",
+  "dialect": "postgresql",
+  "hash": "1234567890abcdef",
+  "entries": [
+    {
+      "tag": "0_init",
+      "timestamp": "2026-04-04T00:00:00.000Z"
+    }
+  ]
+}
