@@ -120,6 +120,52 @@ Server runs on http://localhost:4000
 
 **✓ Now you're ready!** See next section for testing.
 
+## Docker Deployment (API + PostgreSQL)
+
+This project includes a Dockerized deployment that starts:
+- `db`: PostgreSQL 16
+- `api`: Node.js backend
+
+On API container startup, Prisma steps run automatically:
+1. `prisma generate`
+2. `prisma migrate deploy` (applies existing migrations)
+3. Start server
+
+### Run with Docker Compose
+
+```bash
+npm run docker:up
+```
+
+API will be available at `http://localhost:4000` and Swagger UI at `http://localhost:4000/api-docs`.
+
+Stop containers:
+```bash
+npm run docker:down
+```
+
+### Important for schema updates and new migrations
+
+- If you change `prisma/schema.prisma`, create a new migration first:
+```bash
+npm run prisma:migrate -- --name your_migration_name
+```
+or
+```bash
+npm run prisma:migrate:create -- --name your_migration_name
+```
+
+- Commit the generated migration files under `prisma/migrations/`.
+- During deployment, Docker runs `prisma migrate deploy` so those migrations are pushed to PostgreSQL automatically.
+
+### Optional direct schema push (non-migration environments)
+
+For environments where you explicitly want schema push behavior:
+```bash
+npm run prisma:push
+```
+Use this carefully; migration-based deploys are recommended for production.
+
 ## Interactive API Documentation (Swagger UI)
 
 Once the server is running, access interactive API docs:
