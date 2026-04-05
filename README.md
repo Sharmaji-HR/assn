@@ -138,7 +138,7 @@ Set required environment variables first (example):
 export POSTGRES_PASSWORD='your-strong-db-password'
 export JWT_SECRET='your-very-strong-jwt-secret'
 export CORS_ORIGIN='https://your-frontend.example.com'
-# optional: enable only when you want one-time startup admin bootstrap
+# optional: keep false by default; set true only for one-time startup admin bootstrap
 export BOOTSTRAP_ADMIN='false'
 ```
 
@@ -161,7 +161,7 @@ npm run prisma:migrate:create -- --name your_migration_name
 ```
 
 - Commit the generated migration files under `prisma/migrations/`.
-- During deployment, Docker runs `prisma migrate deploy` so those migrations are pushed to PostgreSQL automatically.
+- During deployment, Docker runs `prisma migrate deploy` so those migrations are applied to PostgreSQL automatically.
 
 ### Optional direct schema push (non-migration environments)
 
