@@ -14,7 +14,7 @@ services:
       test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-finance}"]
       interval: 5s
       timeout: 5s
-      retries: 10
+      retries: 6
 
   api:
     build:
@@ -31,7 +31,7 @@ services:
       JWT_SECRET: ${JWT_SECRET:?JWT_SECRET is required}
       JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-1h}
       CORS_ORIGIN: ${CORS_ORIGIN:?CORS_ORIGIN is required}
-      BOOTSTRAP_ADMIN: "false"
+      BOOTSTRAP_ADMIN: ${BOOTSTRAP_ADMIN:-false}
     ports:
       - "4000:4000"
 
