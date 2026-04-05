@@ -138,6 +138,8 @@ Set required environment variables first (example):
 export POSTGRES_PASSWORD='your-strong-db-password'
 export JWT_SECRET='your-very-strong-jwt-secret'
 export CORS_ORIGIN='https://your-frontend.example.com'
+# optional: enable only when you want one-time startup admin bootstrap
+export BOOTSTRAP_ADMIN='false'
 ```
 
 ```bash
