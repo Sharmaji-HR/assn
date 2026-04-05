@@ -133,6 +133,13 @@ On API container startup, Prisma steps run automatically:
 
 ### Run with Docker Compose
 
+Set required environment variables first (example):
+```bash
+export POSTGRES_PASSWORD='your-strong-db-password'
+export JWT_SECRET='your-very-strong-jwt-secret'
+export CORS_ORIGIN='https://your-frontend.example.com'
+```
+
 ```bash
 npm run docker:up
 ```
@@ -147,10 +154,6 @@ npm run docker:down
 ### Important for schema updates and new migrations
 
 - If you change `prisma/schema.prisma`, create a new migration first:
-```bash
-npm run prisma:migrate -- --name your_migration_name
-```
-or
 ```bash
 npm run prisma:migrate:create -- --name your_migration_name
 ```
